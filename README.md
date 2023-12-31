@@ -1,8 +1,5 @@
 <div style="display:flex;justify-content:center;">
-<div style="background: url('./example/assets/unnamed.jpg') center / cover; border-radius: 24px; padding: 28px;display:flex;justify-content:center;flex-direction:column;color:#1f1f1f;text-align:center;max-width:500px">
-<div style="font-weight:600;font-size:57px;">Material3 Style</div>
-<div style="font-size:22px">A Material 3 (Material Design) style library, including typography, color, elevation, shape and motion.</div>
-</div>
+<img src="./example/assets/og.svg" style="max-width: 500px">
 </div>
 
 ---
