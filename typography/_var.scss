@@ -1,0 +1,134 @@
+@function rem($px) {
+  @return calc($px / 16) * 1rem;
+}
+
+$values: (
+  'hero': (
+    'font-size': rem(112),
+    'line-height': rem(112),
+    'font-weight': 475,
+    'letter-spacing': rem(0),
+  ),
+  'display-xl': (
+    'font-size': rem(88),
+    'line-height': rem(96),
+    'font-weight': 475,
+    'letter-spacing': rem(0),
+  ),
+  'display-l': (
+    'font-size': rem(57),
+    'line-height': rem(64),
+    'font-weight': 475,
+    'letter-spacing': rem(0),
+  ),
+  'display-m': (
+    'font-size': rem(45),
+    'line-height': rem(52),
+    'font-weight': 475,
+    'letter-spacing': rem(0),
+  ),
+  'display-s': (
+    'font-size': rem(36),
+    'line-height': rem(44),
+    'font-weight': 475,
+    'letter-spacing': rem(0),
+  ),
+  'headline-l': (
+    'font-size': rem(32),
+    'line-height': rem(40),
+    'font-weight': 475,
+    'letter-spacing': rem(0),
+  ),
+  'headline-m': (
+    'font-size': rem(28),
+    'line-height': rem(36),
+    'font-weight': 475,
+    'letter-spacing': rem(0),
+  ),
+  'headline-s': (
+    'font-size': rem(24),
+    'line-height': rem(32),
+    'font-weight': 475,
+    'letter-spacing': rem(0),
+  ),
+  'title-l': (
+    'font-size': rem(22),
+    'line-height': rem(30),
+    'font-weight': 400,
+    'letter-spacing': rem(0),
+  ),
+  'title-m': (
+    'font-size': rem(16),
+    'line-height': rem(24),
+    'font-weight': 500,
+    'letter-spacing': rem(0),
+  ),
+  'title-s': (
+    'font-size': rem(14),
+    'line-height': rem(20),
+    'font-weight': 500,
+    'letter-spacing': rem(0),
+  ),
+  'label-l': (
+    'font-size': rem(14),
+    'line-height': rem(20),
+    'font-weight': 500,
+    'letter-spacing': rem(0),
+  ),
+  'label-m': (
+    'font-size': rem(12),
+    'line-height': rem(16),
+    'font-weight': 500,
+    'letter-spacing': rem(0.1),
+  ),
+  'label-s': (
+    'font-size': rem(11),
+    'line-height': rem(16),
+    'font-weight': 500,
+    'letter-spacing': rem(0.1),
+  ),
+  'body-l': (
+    'font-size': rem(16),
+    'line-height': rem(24),
+    'font-weight': 400,
+    'letter-spacing': rem(0),
+  ),
+  'body-m': (
+    'font-size': rem(14),
+    'line-height': rem(20),
+    'font-weight': 400,
+    'letter-spacing': rem(0),
+  ),
+  'body-s': (
+    'font-size': rem(12),
+    'line-height': rem(16),
+    'font-weight': 400,
+    'letter-spacing': rem(0.1),
+  ),
+  'code-l': (
+    'font-size': rem(16),
+    'line-height': rem(24),
+    'font-weight': 400,
+    'letter-spacing': rem(0),
+  ),
+  'code-m': (
+    'font-size': rem(14),
+    'line-height': rem(20),
+    'font-weight': 400,
+    'letter-spacing': rem(0),
+  ),
+  'code-snippet': (
+    'font-size': rem(15),
+    'line-height': rem(32),
+    'font-weight': 500,
+    'letter-spacing': rem(0),
+  ),
+);
+
+@mixin theme() {
+  @each $token, $props in $values {
+    @each $prop, $value in $props {
+      --m3-#{$token}-#{$prop}: #{$value};
+    }
+  }
+}

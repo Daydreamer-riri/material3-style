@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>typography-demo</title>
+    <style>
+      * {
+        margin: 0;
+        box-sizing: border-box;
+      }
+      img,
+      video {
+        max-width: 100%;
+      }
+      body {
+        max-width: 840px;
+        width: 100%;
+        margin: 120px auto 100px;
+        padding-right: 40px;
+        padding-left: 40px;
+      }
+    </style>
+    <link rel="stylesheet" href="../../typography/css/index.css" />
+  </head>
+  <body class="prose prose-ul-star">
+    <h1>Introducing Tone-based Surfaces in Material 3</h1>
+    <img src="./image1.png" />
+    <p>
+      The previous way makers could achieve tinted surfaces, which are a
+      hallmark of the M3 design language, was to assign the color role “surface”
+      to a component, and increase its elevation to achieve the desired tinting
+      which was applied via an opacity layer.
+    </p>
+    <figure>
+      <video src="./surface-blog-sequence-old.mov" autoplay></video>
+      <figcaption>
+        Pre-update: A tinted overlay communicated the elevation of a component
+        surface
+      </figcaption>
+    </figure>
+    <p>
+      The update introduces dedicated surface color roles that are no longer
+      tied to elevation. Makers will be able to choose the right surface roles
+      based on the containment needs of their products, and now have more layout
+      flexibility for larger screens.
+    </p>
+    <video src="./surface-blog-sequence-new.mov" autoplay></video>
+    <p>
+      The new <strong>surface container</strong> roles and tokens include five
+      colors.
+    </p>
+    <p>
+      “Surface container” is the recommended default color role for a contained
+      area against the “surface” color role. It provides good contrast and can
+      be flexibly combined with all other surface container roles ranging from
+      “surface container lowest” with the lowest emphasis against the “surface”
+      role, to “surface container highest” with the highest emphasis against the
+      “surface” role.
+    </p>
+    <h2>Migrating to the new <code>surface color</code> roles</h2>
+    <p>
+      All Material Components will automatically update to use the new surface
+      container color roles. For makers using the previous opacity-based surface
+      model for custom color mappings, we recommend remapping these to the new
+      roles.
+    </p>
+    <ul>
+      <li>Surface Container Lowest is a new role</li>
+      <li>Surface at elevation +1 becomes Surface Container Low</li>
+      <li>Surface at elevation +2 becomes Surface Container</li>
+      <li>Surface at elevation +3 becomes Surface Container High</li>
+      <li>
+        Surface at elevation +4 and +5 are being deprecated, it is recommended
+        to use Surface Container Highest by default as a replacement. As an
+        alternative Surface Container High, or Surface Dim can be used depending
+        on the specific use case.
+      </li>
+      <li>Surface Variant becomes Surface Container Highest</li>
+    </ul>
+    <p>
+      To learn more about applying the new color roles in your products, visit
+      the <a>color system guidance</a>.
+    </p>
+  </body>
+</html>

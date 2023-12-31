@@ -1,0 +1,362 @@
+@use './typescale' as *;
+@use './var' as *;
+@use 'sass:list';
+@use 'sass:math';
+
+@function round($number, $digits: 4) {
+  $digits: pow(10, $digits);
+  @return math.div(math.round($number * $digits), $digits);
+}
+
+@function em($px, $base) {
+  @return round(calc($px / $base), 4) * 1em;
+}
+
+$map: (
+  '&': (
+    'body-l',
+    'body-m',
+    'body-l',
+  ),
+  'h1': (
+    'display-l',
+    'display-s',
+    'display-m',
+  ),
+  'h2': (
+    'display-m',
+    'headline-l',
+    'display-s',
+  ),
+  'h3': (
+    'display-s',
+    'headline-m',
+    'headline-l',
+  ),
+  'h4': (
+    'headline-s',
+    'headline-s',
+    'headline-s',
+  ),
+  'h5': (
+    'title-m',
+    'title-m',
+    'title-m',
+  ),
+  'h6': (
+    'title-m',
+    'title-m',
+    'title-m',
+  ),
+  'a': (
+    'title-m',
+    'title-m',
+    'title-m',
+  ),
+);
+
+@mixin margin-style($type, $size: 'l') {
+  @if $type== 'media' {
+    @if $size== 'l' {
+      margin-top: em(32, 16);
+      margin-bottom: em(32, 16);
+    } @else if $size== 's' {
+      margin-top: em(24, 14);
+      margin-bottom: em(24, 14);
+    } @else if $size== 'm' {
+      margin-top: em(32, 18);
+      margin-bottom: em(32, 18);
+    }
+  }
+}
+
+@mixin typography() {
+  h2,
+  h4,
+  h5,
+  h6 {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    margin: 2rem 0;
+  }
+
+  @each $heading, $tokens in $map {
+    @for $i from 1 through 3 {
+      $token: list.nth($tokens, $i);
+      $screen: if(
+        $i==2,
+        '(max-width: 600px)',
+        if($i==3, '(min-width: 601px) and (max-width: 1294px)', null)
+      );
+
+      @if $screen {
+        @media screen and #{$screen} {
+          #{$heading} {
+            @include type-scale($token);
+          }
+        }
+      } @else {
+        #{$heading} {
+          @include type-scale($token);
+        }
+      }
+    }
+  }
+
+  img {
+    @include margin-style(media);
+  }
+
+  picture {
+    @include margin-style(media);
+
+    & > img {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  video {
+    @include margin-style(media);
+  }
+
+  strong,
+  b {
+    font-weight: 600;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  p {
+    margin-top: em(20, 16);
+    margin-bottom: em(20, 16);
+  }
+
+  blockquote {
+    margin-top: em(32, 20);
+    margin-bottom: em(32, 20);
+    padding-left: em(20, 20);
+  }
+
+  ul {
+    list-style: disc outside none;
+    list-style: initial;
+  }
+
+  kbd {
+    font-size: em(14, 16);
+    border-radius: rem(5);
+    padding-top: em(3, 16);
+    padding-right: em(6, 16);
+    padding-bottom: em(3, 16);
+    padding-left: em(6, 16);
+  }
+
+  code {
+    font-size: em(14, 16);
+  }
+
+  h2 code {
+    font-size: em(21, 24);
+  }
+
+  h3 code {
+    font-size: em(18, 20);
+  }
+
+  pre {
+    font-size: em(14, 16);
+    line-height: round(math.div(24, 14));
+    margin-top: em(24, 14);
+    margin-bottom: em(24, 14);
+    border-radius: rem(6);
+    padding-top: em(12, 14);
+    padding-right: (16, 14);
+    padding-bottom: em(12, 14);
+    padding-left: em(16, 14);
+  }
+
+  ol {
+    margin-top: em(20, 16);
+    margin-bottom: em(20, 16);
+    padding-left: em(26, 16);
+  }
+
+  ul {
+    margin-top: em(20, 16);
+    margin-bottom: em(20, 16);
+    padding-left: em(26, 16);
+  }
+
+  li {
+    margin-top: em(8, 16);
+    margin-bottom: em(8, 16);
+  }
+
+  ol > li {
+    padding-left: em(6, 16);
+  }
+
+  ul > li {
+    padding-left: em(6, 16);
+  }
+
+  > ul > li p {
+    margin-top: em(12, 16);
+    margin-bottom: em(12, 16);
+  }
+
+  > ul > li > *:first-child {
+    margin-top: em(20, 16);
+  }
+
+  > ul > li > *:last-child {
+    margin-bottom: em(20, 16);
+  }
+
+  > ol > li > *:first-child {
+    margin-top: em(20, 16);
+  }
+
+  > ol > li > *:last-child {
+    margin-bottom: em(20, 16);
+  }
+
+  ul ul,
+  ul ol,
+  ol ul,
+  ol ol {
+    margin-top: em(12, 16);
+    margin-bottom: em(12, 16);
+  }
+
+  dl {
+    margin-top: em(20, 16);
+    margin-bottom: em(20, 16);
+  }
+
+  dt {
+    margin-top: em(20, 16);
+  }
+
+  dd {
+    margin-top: em(8, 16);
+    padding-left: em(26, 16);
+  }
+
+  hr {
+    margin-top: em(48, 16);
+    margin-bottom: em(48, 16);
+  }
+
+  hr + * {
+    margin-top: 0;
+  }
+
+  h2 + * {
+    margin-top: 0;
+  }
+
+  h3 + * {
+    margin-top: 0;
+  }
+
+  h4 + * {
+    margin-top: 0;
+  }
+
+  table {
+    font-size: em(14, 16);
+    line-height: round(math.div(24, 14));
+  }
+
+  thead th {
+    padding-left: em(8, 14);
+    padding-right: em(8, 14);
+    padding-bottom: em(8, 14);
+  }
+
+  thead th:first-child {
+    padding-left: 0;
+  }
+
+  thead th:last-child {
+    padding-right: 0;
+  }
+
+  tbody td,
+  tfoot td {
+    padding-top: em(8, 14);
+    padding-left: em(8, 14);
+    padding-right: em(8, 14);
+    padding-bottom: em(8, 14);
+  }
+
+  tbody td:first-child,
+  tfoot td:first-child {
+    padding-left: 0;
+  }
+
+  tbody td:last-child,
+  tfoot td:last-child {
+    padding-right: 0;
+  }
+
+  figure {
+    margin-top: em(32, 16);
+    margin-bottom: em(32, 16);
+  }
+
+  figure > * {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  figcaption {
+    font-size: em(14, 16);
+    line-height: round(math.div(20, 14));
+    margin-top: em(12, 14);
+  }
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@mixin ul-star {
+  ul {
+    list-style: none;
+  }
+  ul li {
+    position: relative;
+
+    @for $i from 1 through 3 {
+      &:nth-child(3n + #{$i}) {
+        --rotation: #{$i};
+      }
+    }
+  }
+  ul li::before {
+    content: '';
+    height: 1.625em;
+    width: 8px;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: calc((-1.625em - 8px) / 2);
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.95843 0.279933C5.5378 -0.353974 6.58452 0.173492 6.41974 1.01632L6.05454 2.88412C5.99767 3.17501 6.09646 3.47451 6.31525 3.67447L7.72007 4.95843C8.35397 5.5378 7.82651 6.58452 6.98368 6.41974L5.11588 6.05454C4.82499 5.99767 4.52549 6.09646 4.32553 6.31525L3.04157 7.72007C2.4622 8.35397 1.41548 7.82651 1.58026 6.98368L1.94545 5.11588C2.00233 4.82499 1.90354 4.52549 1.68475 4.32553L0.279933 3.04157C-0.353974 2.4622 0.173492 1.41548 1.01632 1.58026L2.88412 1.94545C3.17501 2.00233 3.47451 1.90354 3.67447 1.68475L4.95843 0.279933Z' fill='%231E1E1C'/%3E%3C/svg%3E")
+      no-repeat;
+    mask-size: 100% 100%;
+    vertical-align: text-bottom;
+    transform: rotate(calc(var(--rotation) * 30deg));
+  }
+}

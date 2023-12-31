@@ -1,0 +1,14 @@
+@use 'sass:map';
+@use 'sass:list';
+@use './var';
+
+@mixin type-scale($token) {
+  @if list.index(map.keys(var.$values), $token) == null {
+    @error '[material3.css] Unknown token: #{$token}';
+  }
+
+  font-size: var(--m3-#{$token}-font-size);
+  line-height: var(--m3-#{$token}-line-height);
+  font-weight: var(--m3-#{$token}-font-weight);
+  letter-spacing: var(--m3-#{$token}-letter-spacing);
+}

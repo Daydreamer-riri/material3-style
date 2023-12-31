@@ -1,0 +1,13 @@
+@use './index' as *;
+
+:root {
+  @include theme();
+}
+
+.prose:not(:where([class~='not-prose'] *)) {
+  @include typography();
+}
+
+.prose-ul-star:not(:where([class~='not-prose'] *)) {
+  @include ul-star();
+}
