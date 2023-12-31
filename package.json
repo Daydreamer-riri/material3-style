@@ -1,0 +1,67 @@
+{
+  "name": "material3-style",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@8.7.4",
+  "description": "A Material 3 (Material Design) style library, including typography, color, elevation, shape and motion.",
+  "author": "Riri <Daydreamerriri@outlook.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/Daydreamer-riri/material3.css#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daydreamer-riri/material3.css.git"
+  },
+  "bugs": "https://github.com/Daydreamer-riri/material3.css/issues",
+  "keywords": ["material3", "material design", "css", "style", "typography", "color", "elevation", "shape"],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "build:sass": "sass --style=compressed typography/style.scss:typography/css/index.css",
+    "dev": "unbuild --stub",
+    "lint": "eslint .",
+    "prepublishOnly": "nr build",
+    "release": "bumpp && npm publish",
+    "start": "esno src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@ririd/eslint-config": "^1.0.3",
+    "@types/node": "^18.15.11",
+    "bumpp": "^9.2.1",
+    "eslint": "^8.56.0",
+    "esno": "^4.0.0",
+    "lint-staged": "15.2.0",
+    "rimraf": "5.0.1",
+    "sass": "^1.69.6",
+    "simple-git-hooks": "^2.9.0",
+    "typescript": "5.3.3",
+    "unbuild": "^2.0.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}
