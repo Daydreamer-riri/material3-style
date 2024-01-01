@@ -1,0 +1,5 @@
+@use '../var';
+
+:root {
+  @include var.dark-theme();
+}

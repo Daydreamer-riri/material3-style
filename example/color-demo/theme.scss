@@ -1,11 +1,11 @@
 @use './node_modules/material3-style/color/var';
 
 :root {
-  @include var.theme-light();
+  @include var.light-theme();
 }
 
 .dark:root {
-  @include var.theme-dark();
+  @include var.dark-theme();
 }
 
 body {
