@@ -1,7 +1,8 @@
 {
   "name": "color-demo",
   "scripts": {
-    "color-gen": "material3-style color"
+    "color-gen": "material3-style color",
+    "build:sass": "sass theme.scss:theme.css"
   },
   "dependencies": {
     "material3-style": "workspace:*"

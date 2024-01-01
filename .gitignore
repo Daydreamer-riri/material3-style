@@ -11,3 +11,4 @@ node_modules
 temp
 *.css
 *.css.map
+!example/**/*.css

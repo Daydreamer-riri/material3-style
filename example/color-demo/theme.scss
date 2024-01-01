@@ -1,0 +1,14 @@
+@use './node_modules/material3-style/color/var';
+
+:root {
+  @include var.theme-light();
+}
+
+.dark:root {
+  @include var.theme-dark();
+}
+
+body {
+  color: var(--m3-color-on-surface);
+  background: var(--m3-color-surface);
+}

@@ -3,16 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>typography-demo</title>
+    <title>color-demo</title>
     <style>
       * {
         margin: 0;
         box-sizing: border-box;
       }
+
       img,
       video {
         max-width: 100%;
       }
+
       body {
         max-width: 840px;
         width: 100%;
@@ -20,10 +22,19 @@
         padding-right: 40px;
         padding-left: 40px;
       }
+
+      .theme-trigger {
+        position: fixed;
+        top: 20px;
+        right: 100px;
+      }
     </style>
     <link rel="stylesheet" href="../../typography/css/index.css" />
+    <link rel="stylesheet" href="./theme.css" />
   </head>
+
   <body class="prose prose-ul-star">
+    <button class="theme-trigger">Change theme</button>
     <h1>Introducing Tone-based Surfaces in Material 3</h1>
     <img src="../assets/cover.png" />
     <p>
@@ -43,7 +54,7 @@
       The update introduces dedicated surface color roles that are no longer
       tied to elevation. Makers will be able to choose the right surface roles
       based on the containment needs of their products, and now have more layout
-      flexibility for larger screens.
+      flexibility for largSer screens.
     </p>
     <video src="../assets/surface-blog-sequence-new.mov" autoplay></video>
     <p>
@@ -82,5 +93,11 @@
       To learn more about applying the new color roles in your products, visit
       the <a>color system guidance</a>.
     </p>
+    <script>
+      const trigger = document.querySelector('.theme-trigger')
+      trigger.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark')
+      })
+    </script>
   </body>
 </html>
