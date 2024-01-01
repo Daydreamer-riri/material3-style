@@ -6,6 +6,7 @@ export default ririd(
     formatters: true,
     ignores: [
       '**/*.css',
+      'color/_var.scss',
     ],
   },
 )

@@ -32,12 +32,17 @@
       ]
     }
   },
+  "bin": {
+    "material3-style": "./bin/material3-style.mjs"
+  },
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "unbuild",
-    "build:sass": "sass --style=compressed typography/style.scss:typography/css/index.css",
+    "build:sass": "npm run build:typo | npm run build:color",
+    "build:typo": "sass --style=compressed typography/style.scss:typography/css/index.css",
+    "build:color": "sass --style=compressed color/style:color/css",
     "dev": "unbuild --stub",
     "lint": "eslint .",
     "prepublishOnly": "nr build",
@@ -45,9 +50,14 @@
     "start": "esno src/index.ts",
     "typecheck": "tsc --noEmit"
   },
+  "dependencies": {
+    "@material/material-color-utilities": "^0.2.7",
+    "yargs": "^17.7.2"
+  },
   "devDependencies": {
     "@ririd/eslint-config": "^1.0.3",
     "@types/node": "^18.15.11",
+    "@types/yargs": "^17.0.32",
     "bumpp": "^9.2.1",
     "eslint": "^8.56.0",
     "esno": "^4.0.0",

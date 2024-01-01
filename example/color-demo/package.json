@@ -1,0 +1,9 @@
+{
+  "name": "color-demo",
+  "scripts": {
+    "color-gen": "material3-style color"
+  },
+  "dependencies": {
+    "material3-style": "workspace:*"
+  }
+}
