@@ -12,7 +12,7 @@ see [m3.material.io/styles](https://m3.material.io/styles)
 ## Roadmap
 
 - [x] typography
-- [ ] color
+- [x] color
 - [ ] elevation
 - [ ] shape
 - [ ] motion
