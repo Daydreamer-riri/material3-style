@@ -49,7 +49,7 @@
     "reset:color": "esno scripts/reset-color.ts",
     "dev": "unbuild --stub",
     "lint": "eslint .",
-    "prepublishOnly": "nr build && nr reset:color && nr:build:sass",
+    "prepublishOnly": "nr build && nr reset:color && nr build:sass",
     "release": "bumpp && npm publish",
     "start": "esno src/index.ts",
     "typecheck": "tsc --noEmit"
