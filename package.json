@@ -14,15 +14,6 @@
   "bugs": "https://github.com/Daydreamer-riri/material3-style/issues",
   "keywords": ["material3", "material design", "css", "style", "typography", "color", "elevation", "shape"],
   "sideEffects": false,
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    }
-  },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "typesVersions": {
     "*": {
@@ -36,16 +27,20 @@
     "material3-style": "./bin/material3-style.mjs"
   },
   "files": [
-    "dist"
+    "bin",
+    "color",
+    "dist",
+    "typography"
   ],
   "scripts": {
     "build": "unbuild",
     "build:sass": "npm run build:typo | npm run build:color",
     "build:typo": "sass --style=compressed typography/style.scss:typography/css/index.css",
     "build:color": "sass --style=compressed color/style:color/css",
+    "reset:color": "esno scripts/reset-color.ts",
     "dev": "unbuild --stub",
     "lint": "eslint .",
-    "prepublishOnly": "nr build",
+    "prepublishOnly": "nr build && nr reset:color && nr:build:sass",
     "release": "bumpp && npm publish",
     "start": "esno src/index.ts",
     "typecheck": "tsc --noEmit"

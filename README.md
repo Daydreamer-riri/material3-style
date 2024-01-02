@@ -90,7 +90,7 @@ The default source color is `#673ab7`.
 You can change the source color using the following command:
 
 ```bash
-npm material3-style color -s "#518242"
+npx --no-install material3-style color -s "#518242"
 ```
 
 Then, you will get a new theme palette!
