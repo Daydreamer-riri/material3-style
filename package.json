@@ -2,7 +2,7 @@
   "name": "material3-style",
   "type": "module",
   "version": "0.0.1",
-  "packageManager": "pnpm@8.7.4",
+  "packageManager": "pnpm@9.4.0",
   "description": "A Material 3 (Material Design) style library, including typography, color, elevation, shape and motion.",
   "author": "Riri <Daydreamerriri@outlook.com>",
   "license": "MIT",
@@ -55,15 +55,15 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@material/material-color-utilities": "^0.2.7",
+    "@material/material-color-utilities": "^0.3.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@ririd/eslint-config": "^1.0.3",
+    "@ririd/eslint-config": "^1.3.3",
     "@types/node": "^18.15.11",
     "@types/yargs": "^17.0.32",
     "bumpp": "^9.2.1",
-    "eslint": "^8.56.0",
+    "eslint": "^9.6.0",
     "esno": "^4.0.0",
     "lint-staged": "15.2.0",
     "rimraf": "5.0.1",
