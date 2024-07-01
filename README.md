@@ -9,6 +9,8 @@
 
 Design see [m3.material.io/styles](https://m3.material.io/styles)
 
+> See demo: https://daydreamer-riri.github.io/material3-style/example/color-demo/
+
 ## Typography
 
 For example, using Sass:
